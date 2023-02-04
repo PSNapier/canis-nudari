@@ -1,0 +1,93 @@
+@import url("https://fonts.googleapis.com/css?family=Lato:400,400i,700");
+@import url("https://fonts.googleapis.com/css?family=IM+Fell+English+SC:400,400i,700");
+
+body {
+  min-width: 810px;
+  background: url(canis-nudari-bg.png) no-repeat fixed left;
+  background-color: #b96541;
+  color: white;
+  font-family: IM Fell English SC, serif;
+  font-size: 19px;
+  font-weight: 400;
+  padding: 25px;
+  overflow-y: show;
+}
+
+.white {
+  background: rgba(250, 250, 250, 33%);
+  padding: 50px;
+  padding-top: 0px;
+  padding-bottom: 25px;
+}
+
+p {
+  text-align: center;
+  font-family: Lato;
+}
+
+a {
+  color: white;
+}
+
+select {
+  height: 21.25px;
+  font-family: monospace;
+}
+
+.parents {
+  clear: left;
+  text-align: center;
+}
+
+#pupwrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.puppyoutput {
+  width: 50%;
+}
+
+.pupoptions {
+  margin: 10px;
+  padding: 5px;
+  padding-left: 25px;
+  padding-right: 25px;
+  color: white;
+}
+
+.puppyoutput p {
+  text-align: center;
+  white-space: pre-wrap;
+  word-break: break-word;
+  font-weight: 900;
+  font-size: 19px;
+}
+
+#puppyoutput {
+  text-align: center;
+  font-size: 200%;
+}
+
+.warning {
+  text-align: center;
+  font-size: 200%;
+}
+
+button {
+  background-color: #f3b583;
+  border: none;
+  color: white;
+  padding: 10px 25px;
+  text-align: center;
+  display: inline-block;
+  font-family: IM Fell English SC;
+  font-size: 16px;
+}
+
+button:hover {
+  background-color: #f7d38f;
+  color: white;
+}

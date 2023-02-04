@@ -1,0 +1,25 @@
+services:
+
+  php:
+    build:
+      dockerfile: Dockerfile
+      context: .
+    restart: always
+    volumes:
+      - ./src/public:/var/www
+
+  nginx:
+    image: nginx:stable
+    restart: always
+    links:
+      - php
+    ports:
+      - 8008:80
+    volumes:
+      - ./src/public:/var/www
+      - ./nginx.conf:/etc/nginx/conf.d/ngnix.conf
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf
+
+networks:
+  default:
+    name: nginx-proxy-manager_default
