@@ -19,9 +19,14 @@
 	<script src="script.js" defer></script>
 </head>
 
+<!-- items-center isn't working as expected for some reason, so overriding with inline-style, ditto for scroll -->
 <body
-	style="background-image: url('img-dunes.png')"
-	class="flex min-w-[600px] flex-col justify-center bg-orange-200 bg-cover bg-fixed text-center"
+	style="
+		background-image: url('img-dunes.png');
+		align-items: center;
+		overflow-y: scroll;
+	"
+	class="flex min-w-[600px] flex-col bg-orange-200 bg-cover bg-fixed text-center"
 >
 	<!-- <div class="absolute top-0 right-0">
 		<div
@@ -32,38 +37,40 @@
 			"
 		></div>
 		<div class="bg-orange-100">
-			For help and troubleshooting please contact MiscNapier at
-			thatnapier95@gmail.com or on
-			<a href="http://miscnapier.deviantart.com/">DeviantART</a>.
+			For help and troubleshooting please contact MiscNapier on
+			<a href="http://miscnapier.deviantart.com/">DeviantART</a> or email me at <a href="mailto: abaturestudio@gmail.com">abaturestudio@gmail.com</a>.
 		</div>
 	</div> -->
 
-	<div class="m-5 flex-col bg-orange-100 bg-opacity-50 p-5">
+	<div class="m-5 bg-orange-100 bg-opacity-50 p-5">
 		<p class="m-auto max-w-xl">
 			This roller is for the
 			<a href="https://www.deviantart.com/CanisNudari/"
 				>Canis Nudari</a
 			>
 			group.
-			<br />For help and troubleshooting please contact MiscNapier at
-			thatnapier95@gmail.com or on
-			<a href="http://miscnapier.deviantart.com/">DeviantART</a>.
+			<br />For help and troubleshooting please contact MiscNapier on
+			<a href="http://miscnapier.deviantart.com/">DeviantART</a> or
+			email me at
+			<a href="mailto: abaturestudio@gmail.com"
+				>abaturestudio@gmail.com</a
+			>.
 		</p>
 
-		<div class="m-auto mt-5 w-4/6">
-			<div class="flex flex-row justify-center">
-				<div class="mr-5 font-bold">SIRE:</div>
-				<input class="w-5/6" id="sireget" type="text" />
+		<div class="[&>*]:whitespace-nowrap">
+			<div class="mt-4">
+				<label for="sire" style="display: inline-block; width: 4rem" class="font-bold">SIRE:</label>
+				<input type="text" id="sireget" class="w-5/6"></input>
 			</div>
-
-			<div class="mt-2 flex flex-row justify-center">
-				<div class="mr-5 font-bold">DAM:</div>
-				<input class="w-5/6" id="damget" type="text" />
+			
+			<div class="mt-2">
+				<label for="dam" style="display: inline-block; width: 4rem" class="font-bold">DAM:</label>
+				<input type="text" id="damget" class="w-5/6"></input>
 			</div>
 		</div>
 
 		<button
-			class="m-auto mt-5 w-fit bg-orange-100 p-3 font-bold transition hover:scale-[115%] hover:bg-orange-300"
+			class="m-auto mt-6 w-fit bg-orange-100 p-3 font-bold transition hover:scale-[115%] hover:bg-orange-300"
 			onclick="rollgeno()"
 		>
 			ROLL PUPPIES
@@ -76,9 +83,5 @@
 	<div
 		id="puppy-container"
 		class="m-5 mt-0 grid grid-cols-2 gap-4 text-orange-100 [&>*]:bg-stone-900 [&>*]:bg-opacity-75 [&>*]:p-4"
-	>
-		<div id="warning" class="invisible col-span-2">
-			Check Litter Size Genes
-		</div>
-	</div>
+	></div>
 </body>

@@ -13,28 +13,21 @@ function rollgeno() {
 	// 1.7 = stat system
 	// 1.8 = iterative gene handling
 
-	// FIX: purge old puppy-output divs on re-roll
-	// const puppyDivs = document.getElementsByClassName("puppy-output");
-	// puppyDivs.forEach(purge());
-
-	// function purge() {
-	// 	console.log(this);
-	// 	this.remove();
-	// }
+	document.getElementById('puppy-container').innerHTML = '';
 
 	//puppy
 	var puppy = [];
 	var pheno = [];
-	var type = "";
+	var type = '';
 	var puppydeath = 0;
 
 	//parents
-	var sireget = document.getElementById("sireget").value;
-	var ssplitfix = sireget.replace(/\//g, " ");
+	var sireget = document.getElementById('sireget').value;
+	var ssplitfix = sireget.replace(/\//g, ' ');
 	var ssplit = ssplitfix;
 
-	var damget = document.getElementById("damget").value;
-	var dsplitfix = damget.replace(/\//g, " ");
+	var damget = document.getElementById('damget').value;
+	var dsplitfix = damget.replace(/\//g, ' ');
 	var dsplit = dsplitfix;
 
 	function roller(x) {
@@ -60,7 +53,7 @@ function rollgeno() {
 				var d = s2[1].concat(d2[1]);
 
 				var random = [a, b, c, d];
-				var random = random.map((x) => x.replace("zZ", "Zz"));
+				var random = random.map((x) => x.replace('zZ', 'Zz'));
 				var random = random[Math.floor(Math.random() * 4)];
 
 				puppy.push(random);
@@ -69,29 +62,29 @@ function rollgeno() {
 			if (cssilver != -1 && cdsilver != -1) {
 				rollsilver();
 			} else {
-				puppy.push("??");
+				puppy.push('??');
 			}
 
 			//yellow
 			var csyellow = ssplit.search(
-				/\b(Yd|ya|ys|yg|yb|yc)(Yd|ya|ys|yg|yb|yc)\b/
+				/\b(Yd|ya|ys|yg|yb|yc)(Yd|ya|ys|yg|yb|yc)\b/,
 			);
 			var cdyellow = dsplit.search(
-				/\b(Yd|ya|ys|yg|yb|yc)(Yd|ya|ys|yg|yb|yc)\b/
+				/\b(Yd|ya|ys|yg|yb|yc)(Yd|ya|ys|yg|yb|yc)\b/,
 			);
 
 			function rollyellow() {
 				var s1 = ssplit.match(
-					/\b(Yd|ya|ys|yg|yb|yc)(?=Yd|ya|ys|yg|yb|yc)/
+					/\b(Yd|ya|ys|yg|yb|yc)(?=Yd|ya|ys|yg|yb|yc)/,
 				);
 				var s2 = ssplit.match(
-					/(?<=Yd|ya|ys|yg|yb|yc)(Yd|ya|ys|yg|yb|yc)\b/
+					/(?<=Yd|ya|ys|yg|yb|yc)(Yd|ya|ys|yg|yb|yc)\b/,
 				);
 				var d1 = dsplit.match(
-					/\b(Yd|ya|ys|yg|yb|yc)(?=Yd|ya|ys|yg|yb|yc)/
+					/\b(Yd|ya|ys|yg|yb|yc)(?=Yd|ya|ys|yg|yb|yc)/,
 				);
 				var d2 = dsplit.match(
-					/(?<=Yd|ya|ys|yg|yb|yc)(Yd|ya|ys|yg|yb|yc)\b/
+					/(?<=Yd|ya|ys|yg|yb|yc)(Yd|ya|ys|yg|yb|yc)\b/,
 				);
 
 				var a = [s1[1], d1[1]];
@@ -101,40 +94,40 @@ function rollgeno() {
 
 				var random = [a, b, c, d];
 				var random = random[Math.floor(Math.random() * 4)];
-				var sortOrder = ["Yd", "ya", "ys", "yg", "yb", "yc"];
+				var sortOrder = ['Yd', 'ya', 'ys', 'yg', 'yb', 'yc'];
 				random.sort(function (a, b) {
 					return sortOrder.indexOf(a) - sortOrder.indexOf(b);
 				});
-				var random = random.join("");
+				var random = random.join('');
 				puppy.push(random);
 			}
 
 			if (csyellow != -1 && cdyellow != -1) {
 				rollyellow();
 			} else {
-				puppy.push("??");
+				puppy.push('??');
 			}
 
 			//dune
 			var csdune = ssplit.search(
-				/\b(Dnc|dna|dnt|dnd|dnl|dns)(Dnc|dna|dnt|dnd|dnl|dns)\b/
+				/\b(Dnc|dna|dnt|dnd|dnl|dns)(Dnc|dna|dnt|dnd|dnl|dns)\b/,
 			);
 			var cddune = dsplit.search(
-				/\b(Dnc|dna|dnt|dnd|dnl|dns)(Dnc|dna|dnt|dnd|dnl|dns)\b/
+				/\b(Dnc|dna|dnt|dnd|dnl|dns)(Dnc|dna|dnt|dnd|dnl|dns)\b/,
 			);
 
 			function rolldune() {
 				var s1 = ssplit.match(
-					/\b(Dnc|dna|dnt|dnd|dnl|dns)(?=Dnc|dna|dnt|dnd|dnl|dns)/
+					/\b(Dnc|dna|dnt|dnd|dnl|dns)(?=Dnc|dna|dnt|dnd|dnl|dns)/,
 				);
 				var s2 = ssplit.match(
-					/(?<=Dnc|dna|dnt|dnd|dnl|dns)(Dnc|dna|dnt|dnd|dnl|dns)\b/
+					/(?<=Dnc|dna|dnt|dnd|dnl|dns)(Dnc|dna|dnt|dnd|dnl|dns)\b/,
 				);
 				var d1 = dsplit.match(
-					/\b(Dnc|dna|dnt|dnd|dnl|dns)(?=Dnc|dna|dnt|dnd|dnl|dns)/
+					/\b(Dnc|dna|dnt|dnd|dnl|dns)(?=Dnc|dna|dnt|dnd|dnl|dns)/,
 				);
 				var d2 = dsplit.match(
-					/(?<=Dnc|dna|dnt|dnd|dnl|dns)(Dnc|dna|dnt|dnd|dnl|dns)\b/
+					/(?<=Dnc|dna|dnt|dnd|dnl|dns)(Dnc|dna|dnt|dnd|dnl|dns)\b/,
 				);
 
 				var a = [s1[1], d1[1]];
@@ -144,18 +137,18 @@ function rollgeno() {
 
 				var random = [a, b, c, d];
 				var random = random[Math.floor(Math.random() * 4)];
-				var sortOrder = ["Dnc", "dna", "dnt", "dnd", "dnl", "dns"];
+				var sortOrder = ['Dnc', 'dna', 'dnt', 'dnd', 'dnl', 'dns'];
 				random.sort(function (a, b) {
 					return sortOrder.indexOf(a) - sortOrder.indexOf(b);
 				});
-				var random = random.join("");
+				var random = random.join('');
 				puppy.push(random);
 			}
 
 			if (csdune != -1 && cddune != -1) {
 				rolldune();
 			} else {
-				puppy.push("??");
+				puppy.push('??');
 			}
 
 			//mix
@@ -175,18 +168,18 @@ function rollgeno() {
 
 				var random = [a, b, c, d];
 				var random = random[Math.floor(Math.random() * 4)];
-				var sortOrder = ["Mx", "mxx", "mxd"];
+				var sortOrder = ['Mx', 'mxx', 'mxd'];
 				random.sort(function (a, b) {
 					return sortOrder.indexOf(a) - sortOrder.indexOf(b);
 				});
-				var random = random.join("");
+				var random = random.join('');
 				puppy.push(random);
 			}
 
 			if (csmix != -1 && cdmix != -1) {
 				rollmix();
 			} else {
-				puppy.push("??");
+				puppy.push('??');
 			}
 
 			//dilute
@@ -206,7 +199,7 @@ function rollgeno() {
 
 				var random = [a, b, c, d];
 				var random = random[Math.floor(Math.random() * 4)];
-				var sortOrder = ["D", "d", "di"];
+				var sortOrder = ['D', 'd', 'di'];
 				random.sort(function (a, b) {
 					return sortOrder.indexOf(a) - sortOrder.indexOf(b);
 				});
@@ -217,16 +210,16 @@ function rollgeno() {
 				) {
 					let x = roller(100);
 					if (x <= 10) {
-						random[0] = "di";
-						random[1] = "di";
+						random[0] = 'di';
+						random[1] = 'di';
 					} else if (x <= 35) {
-						random[1] = "di";
+						random[1] = 'di';
 					}
 				}
 
-				var random = random.join("");
+				var random = random.join('');
 				puppy.push(random);
-				if (random === "didi" && roller(100) <= 80) {
+				if (random === 'didi' && roller(100) <= 80) {
 					puppydeath = 1;
 				}
 			}
@@ -234,7 +227,7 @@ function rollgeno() {
 			if (csdilute != -1 && cddilute != -1) {
 				rolldilute();
 			} else {
-				puppy.push("??");
+				puppy.push('??');
 			}
 		}
 		basecoat();
@@ -242,24 +235,24 @@ function rollgeno() {
 		function coat() {
 			//bodystripes
 			var csbodystripes = ssplit.search(
-				/\b(Stb|sth|stl|str)(Stb|sth|stl|str)\b/
+				/\b(Stb|sth|stl|str)(Stb|sth|stl|str)\b/,
 			);
 			var cdbodystripes = dsplit.search(
-				/\b(Stb|sth|stl|str)(Stb|sth|stl|str)\b/
+				/\b(Stb|sth|stl|str)(Stb|sth|stl|str)\b/,
 			);
 
 			function rollbodystripes() {
 				var s1 = ssplit.match(
-					/\b(Stb|sth|stl|str)(?=Stb|sth|stl|str)/
+					/\b(Stb|sth|stl|str)(?=Stb|sth|stl|str)/,
 				);
 				var s2 = ssplit.match(
-					/(?<=Stb|sth|stl|str)(Stb|sth|stl|str)\b/
+					/(?<=Stb|sth|stl|str)(Stb|sth|stl|str)\b/,
 				);
 				var d1 = dsplit.match(
-					/\b(Stb|sth|stl|str)(?=Stb|sth|stl|str)/
+					/\b(Stb|sth|stl|str)(?=Stb|sth|stl|str)/,
 				);
 				var d2 = dsplit.match(
-					/(?<=Stb|sth|stl|str)(Stb|sth|stl|str)\b/
+					/(?<=Stb|sth|stl|str)(Stb|sth|stl|str)\b/,
 				);
 
 				var a = [s1[1], d1[1]];
@@ -269,40 +262,40 @@ function rollgeno() {
 
 				var random = [a, b, c, d];
 				var random = random[Math.floor(Math.random() * 4)];
-				var sortOrder = ["Stb", "sth", "stl", "str"];
+				var sortOrder = ['Stb', 'sth', 'stl', 'str'];
 				random.sort(function (a, b) {
 					return sortOrder.indexOf(a) - sortOrder.indexOf(b);
 				});
-				var random = random.join("");
+				var random = random.join('');
 				puppy.push(random);
 			}
 
 			if (csbodystripes != -1 && cdbodystripes != -1) {
 				rollbodystripes();
 			} else {
-				puppy.push("??");
+				puppy.push('??');
 			}
 
 			//legstripes
 			var cslegstripes = ssplit.search(
-				/\b(Ltb|lth|ltl|ltr)(Ltb|lth|ltl|ltr)\b/
+				/\b(Ltb|lth|ltl|ltr)(Ltb|lth|ltl|ltr)\b/,
 			);
 			var cdlegstripes = dsplit.search(
-				/\b(Ltb|lth|ltl|ltr)(Ltb|lth|ltl|ltr)\b/
+				/\b(Ltb|lth|ltl|ltr)(Ltb|lth|ltl|ltr)\b/,
 			);
 
 			function rolllegstripes() {
 				var s1 = ssplit.match(
-					/\b(Ltb|lth|ltl|ltr)(?=Ltb|lth|ltl|ltr)/
+					/\b(Ltb|lth|ltl|ltr)(?=Ltb|lth|ltl|ltr)/,
 				);
 				var s2 = ssplit.match(
-					/(?<=Ltb|lth|ltl|ltr)(Ltb|lth|ltl|ltr)\b/
+					/(?<=Ltb|lth|ltl|ltr)(Ltb|lth|ltl|ltr)\b/,
 				);
 				var d1 = dsplit.match(
-					/\b(Ltb|lth|ltl|ltr)(?=Ltb|lth|ltl|ltr)/
+					/\b(Ltb|lth|ltl|ltr)(?=Ltb|lth|ltl|ltr)/,
 				);
 				var d2 = dsplit.match(
-					/(?<=Ltb|lth|ltl|ltr)(Ltb|lth|ltl|ltr)\b/
+					/(?<=Ltb|lth|ltl|ltr)(Ltb|lth|ltl|ltr)\b/,
 				);
 
 				var a = [s1[1], d1[1]];
@@ -312,26 +305,26 @@ function rollgeno() {
 
 				var random = [a, b, c, d];
 				var random = random[Math.floor(Math.random() * 4)];
-				var sortOrder = ["Ltb", "lth", "ltl", "ltr"];
+				var sortOrder = ['Ltb', 'lth', 'ltl', 'ltr'];
 				random.sort(function (a, b) {
 					return sortOrder.indexOf(a) - sortOrder.indexOf(b);
 				});
-				var random = random.join("");
+				var random = random.join('');
 				puppy.push(random);
 			}
 
 			if (cslegstripes != -1 && cdlegstripes != -1) {
 				rolllegstripes();
 			} else {
-				puppy.push("??");
+				puppy.push('??');
 			}
 
 			//spinalstripes
 			var csspinalstripes = ssplit.search(
-				/\b(Pt|pts|ptb)(Pt|pts|ptb)\b/
+				/\b(Pt|pts|ptb)(Pt|pts|ptb)\b/,
 			);
 			var cdspinalstripes = dsplit.search(
-				/\b(Pt|pts|ptb)(Pt|pts|ptb)\b/
+				/\b(Pt|pts|ptb)(Pt|pts|ptb)\b/,
 			);
 
 			function rollspinalstripes() {
@@ -347,40 +340,40 @@ function rollgeno() {
 
 				var random = [a, b, c, d];
 				var random = random[Math.floor(Math.random() * 4)];
-				var sortOrder = ["Pt", "pts", "ptb"];
+				var sortOrder = ['Pt', 'pts', 'ptb'];
 				random.sort(function (a, b) {
 					return sortOrder.indexOf(a) - sortOrder.indexOf(b);
 				});
-				var random = random.join("");
+				var random = random.join('');
 				puppy.push(random);
 			}
 
 			if (csspinalstripes != -1 && cdspinalstripes != -1) {
 				rollspinalstripes();
 			} else {
-				puppy.push("??");
+				puppy.push('??');
 			}
 
 			//blackspotting
 			var csblackspotting = ssplit.search(
-				/\b(Bs|bsk|bss|bsi|bsc)(Bs|bsk|bss|bsi|bsc)\b/
+				/\b(Bs|bsk|bss|bsi|bsc)(Bs|bsk|bss|bsi|bsc)\b/,
 			);
 			var cdblackspotting = dsplit.search(
-				/\b(Bs|bsk|bss|bsi|bsc)(Bs|bsk|bss|bsi|bsc)\b/
+				/\b(Bs|bsk|bss|bsi|bsc)(Bs|bsk|bss|bsi|bsc)\b/,
 			);
 
 			function rollblackspotting() {
 				var s1 = ssplit.match(
-					/\b(Bs|bsk|bss|bsi|bsc)(?=Bs|bsk|bss|bsi|bsc)/
+					/\b(Bs|bsk|bss|bsi|bsc)(?=Bs|bsk|bss|bsi|bsc)/,
 				);
 				var s2 = ssplit.match(
-					/(?<=Bs|bsk|bss|bsi|bsc)(Bs|bsk|bss|bsi|bsc)\b/
+					/(?<=Bs|bsk|bss|bsi|bsc)(Bs|bsk|bss|bsi|bsc)\b/,
 				);
 				var d1 = dsplit.match(
-					/\b(Bs|bsk|bss|bsi|bsc)(?=Bs|bsk|bss|bsi|bsc)/
+					/\b(Bs|bsk|bss|bsi|bsc)(?=Bs|bsk|bss|bsi|bsc)/,
 				);
 				var d2 = dsplit.match(
-					/(?<=Bs|bsk|bss|bsi|bsc)(Bs|bsk|bss|bsi|bsc)\b/
+					/(?<=Bs|bsk|bss|bsi|bsc)(Bs|bsk|bss|bsi|bsc)\b/,
 				);
 
 				var a = [s1[1], d1[1]];
@@ -390,18 +383,18 @@ function rollgeno() {
 
 				var random = [a, b, c, d];
 				var random = random[Math.floor(Math.random() * 4)];
-				var sortOrder = ["Bs", "bsk", "bss", "bsi", "bsc"];
+				var sortOrder = ['Bs', 'bsk', 'bss', 'bsi', 'bsc'];
 				random.sort(function (a, b) {
 					return sortOrder.indexOf(a) - sortOrder.indexOf(b);
 				});
-				var random = random.join("");
+				var random = random.join('');
 				puppy.push(random);
 			}
 
 			if (csblackspotting != -1 && cdblackspotting != -1) {
 				rollblackspotting();
 			} else {
-				puppy.push("??");
+				puppy.push('??');
 			}
 
 			//blackpoints
@@ -421,18 +414,18 @@ function rollgeno() {
 
 				var random = [a, b, c, d];
 				var random = random[Math.floor(Math.random() * 4)];
-				var sortOrder = ["Bp", "bp"];
+				var sortOrder = ['Bp', 'bp'];
 				random.sort(function (a, b) {
 					return sortOrder.indexOf(a) - sortOrder.indexOf(b);
 				});
-				var random = random.join("");
+				var random = random.join('');
 				puppy.push(random);
 			}
 
 			if (csblackpoints != -1 && cdblackpoints != -1) {
 				rollblackpoints();
 			} else {
-				puppy.push("??");
+				puppy.push('??');
 			}
 
 			//blackmask
@@ -452,18 +445,18 @@ function rollgeno() {
 
 				var random = [a, b, c, d];
 				var random = random[Math.floor(Math.random() * 4)];
-				var sortOrder = ["Bm", "bm"];
+				var sortOrder = ['Bm', 'bm'];
 				random.sort(function (a, b) {
 					return sortOrder.indexOf(a) - sortOrder.indexOf(b);
 				});
-				var random = random.join("");
+				var random = random.join('');
 				puppy.push(random);
 			}
 
 			if (csblackmask != -1 && cdblackmask != -1) {
 				rollblackmask();
 			} else {
-				puppy.push("??");
+				puppy.push('??');
 			}
 
 			// // dorsalstrip / dorsaldun
@@ -492,18 +485,18 @@ function rollgeno() {
 
 				var random = [a, b, c, d];
 				var random = random[Math.floor(Math.random() * 4)];
-				var sortOrder = ["Bd", "bd", "bdd"];
+				var sortOrder = ['Bd', 'bd', 'bdd'];
 				random.sort(function (a, b) {
 					return sortOrder.indexOf(a) - sortOrder.indexOf(b);
 				});
-				var random = random.join("");
+				var random = random.join('');
 				puppy.push(random);
 			}
 
 			if (csdorsalstrip != -1 && cddorsalstrip != -1) {
 				rolldorsalstrip();
 			} else {
-				puppy.push("??");
+				puppy.push('??');
 			}
 
 			//saddleback
@@ -523,18 +516,18 @@ function rollgeno() {
 
 				var random = [a, b, c, d];
 				var random = random[Math.floor(Math.random() * 4)];
-				var sortOrder = ["Sdl", "sdl"];
+				var sortOrder = ['Sdl', 'sdl'];
 				random.sort(function (a, b) {
 					return sortOrder.indexOf(a) - sortOrder.indexOf(b);
 				});
-				var random = random.join("");
+				var random = random.join('');
 				puppy.push(random);
 			}
 
 			if (cssaddleback != -1 && cdsaddleback != -1) {
 				rollsaddleback();
 			} else {
-				puppy.push("??");
+				puppy.push('??');
 			}
 
 			//jackalback
@@ -554,18 +547,18 @@ function rollgeno() {
 
 				var random = [a, b, c, d];
 				var random = random[Math.floor(Math.random() * 4)];
-				var sortOrder = ["Jbk", "jbk"];
+				var sortOrder = ['Jbk', 'jbk'];
 				random.sort(function (a, b) {
 					return sortOrder.indexOf(a) - sortOrder.indexOf(b);
 				});
-				var random = random.join("");
+				var random = random.join('');
 				puppy.push(random);
 			}
 
 			if (csjackalback != -1 && cdjackalback != -1) {
 				rolljackalback();
 			} else {
-				puppy.push("??");
+				puppy.push('??');
 			}
 
 			//frosting
@@ -585,18 +578,18 @@ function rollgeno() {
 
 				var random = [a, b, c, d];
 				var random = random[Math.floor(Math.random() * 4)];
-				var sortOrder = ["F", "f"];
+				var sortOrder = ['F', 'f'];
 				random.sort(function (a, b) {
 					return sortOrder.indexOf(a) - sortOrder.indexOf(b);
 				});
-				var random = random.join("");
+				var random = random.join('');
 				puppy.push(random);
 			}
 
 			if (csfrosting != -1 && cdfrosting != -1) {
 				rollfrosting();
 			} else {
-				puppy.push("??");
+				puppy.push('??');
 			}
 
 			//urajiro
@@ -616,18 +609,18 @@ function rollgeno() {
 
 				var random = [a, b, c, d];
 				var random = random[Math.floor(Math.random() * 4)];
-				var sortOrder = ["U", "utgr", "u"];
+				var sortOrder = ['U', 'utgr', 'u'];
 				random.sort(function (a, b) {
 					return sortOrder.indexOf(a) - sortOrder.indexOf(b);
 				});
-				var random = random.join("");
+				var random = random.join('');
 				puppy.push(random);
 			}
 
 			if (csurajiro != -1 && cdurajiro != -1) {
 				rollurajiro();
 			} else {
-				puppy.push("??");
+				puppy.push('??');
 			}
 
 			//whitespotting
@@ -647,18 +640,18 @@ function rollgeno() {
 
 				var random = [a, b, c, d];
 				var random = random[Math.floor(Math.random() * 4)];
-				var sortOrder = ["S", "si", "sp"];
+				var sortOrder = ['S', 'si', 'sp'];
 				random.sort(function (a, b) {
 					return sortOrder.indexOf(a) - sortOrder.indexOf(b);
 				});
-				var random = random.join("");
+				var random = random.join('');
 				puppy.push(random);
 			}
 
 			if (cswhitespotting != -1 && cdwhitespotting != -1) {
 				rollwhitespotting();
 			} else {
-				puppy.push("??");
+				puppy.push('??');
 			}
 
 			//eyeshade
@@ -678,18 +671,18 @@ function rollgeno() {
 
 				var random = [a, b, c, d];
 				var random = random[Math.floor(Math.random() * 4)];
-				var sortOrder = ["Ec", "ec"];
+				var sortOrder = ['Ec', 'ec'];
 				random.sort(function (a, b) {
 					return sortOrder.indexOf(a) - sortOrder.indexOf(b);
 				});
-				var random = random.join("");
+				var random = random.join('');
 				puppy.push(random);
 			}
 
 			if (cseyeshade != -1 && cdeyeshade != -1) {
 				rolleyeshade();
 			} else {
-				puppy.push("??");
+				puppy.push('??');
 			}
 
 			//eyechromia
@@ -709,18 +702,18 @@ function rollgeno() {
 
 				var random = [a, b, c, d];
 				var random = random[Math.floor(Math.random() * 4)];
-				var sortOrder = ["Ex", "exw", "ex"];
+				var sortOrder = ['Ex', 'exw', 'ex'];
 				random.sort(function (a, b) {
 					return sortOrder.indexOf(a) - sortOrder.indexOf(b);
 				});
-				var random = random.join("");
+				var random = random.join('');
 				puppy.push(random);
 			}
 
 			if (cseyechromia != -1 && cdeyechromia != -1) {
 				rolleyechromia();
 			} else {
-				puppy.push("??");
+				puppy.push('??');
 			}
 
 			//nosepigment
@@ -740,18 +733,18 @@ function rollgeno() {
 
 				var random = [a, b, c, d];
 				var random = random[Math.floor(Math.random() * 4)];
-				var sortOrder = ["N", "n"];
+				var sortOrder = ['N', 'n'];
 				random.sort(function (a, b) {
 					return sortOrder.indexOf(a) - sortOrder.indexOf(b);
 				});
-				var random = random.join("");
+				var random = random.join('');
 				puppy.push(random);
 			}
 
 			if (csnosepigment != -1 && cdnosepigment != -1) {
 				rollnosepigment();
 			} else {
-				puppy.push("??");
+				puppy.push('??');
 			}
 
 			//coatlength
@@ -771,18 +764,18 @@ function rollgeno() {
 
 				var random = [a, b, c, d];
 				var random = random[Math.floor(Math.random() * 4)];
-				var sortOrder = ["Cts", "ctm"];
+				var sortOrder = ['Cts', 'ctm'];
 				random.sort(function (a, b) {
 					return sortOrder.indexOf(a) - sortOrder.indexOf(b);
 				});
-				var random = random.join("");
+				var random = random.join('');
 				puppy.push(random);
 			}
 
 			if (cscoatlength != -1 && cdcoatlength != -1) {
 				rollcoatlength();
 			} else {
-				puppy.push("??");
+				puppy.push('??');
 			}
 
 			//crestvariety
@@ -802,40 +795,40 @@ function rollgeno() {
 
 				var random = [a, b, c, d];
 				var random = random[Math.floor(Math.random() * 4)];
-				var sortOrder = ["Rg", "rg"];
+				var sortOrder = ['Rg', 'rg'];
 				random.sort(function (a, b) {
 					return sortOrder.indexOf(a) - sortOrder.indexOf(b);
 				});
-				var random = random.join("");
+				var random = random.join('');
 				puppy.push(random);
 			}
 
 			if (cscrestvariety != -1 && cdcrestvariety != -1) {
 				rollcrestvariety();
 			} else {
-				puppy.push("??");
+				puppy.push('??');
 			}
 
 			//tailshape
 			var cstailshape = ssplit.search(
-				/\b(Tlt|tlp|tls|tla)(Tlt|tlp|tls|tla)\b/
+				/\b(Tlt|tlp|tls|tla)(Tlt|tlp|tls|tla)\b/,
 			);
 			var cdtailshape = dsplit.search(
-				/\b(Tlt|tlp|tls|tla)(Tlt|tlp|tls|tla)\b/
+				/\b(Tlt|tlp|tls|tla)(Tlt|tlp|tls|tla)\b/,
 			);
 
 			function rolltailshape() {
 				var s1 = ssplit.match(
-					/\b(Tlt|tlp|tls|tla)(?=Tlt|tlp|tls|tla)/
+					/\b(Tlt|tlp|tls|tla)(?=Tlt|tlp|tls|tla)/,
 				);
 				var s2 = ssplit.match(
-					/(?<=Tlt|tlp|tls|tla)(Tlt|tlp|tls|tla)\b/
+					/(?<=Tlt|tlp|tls|tla)(Tlt|tlp|tls|tla)\b/,
 				);
 				var d1 = dsplit.match(
-					/\b(Tlt|tlp|tls|tla)(?=Tlt|tlp|tls|tla)/
+					/\b(Tlt|tlp|tls|tla)(?=Tlt|tlp|tls|tla)/,
 				);
 				var d2 = dsplit.match(
-					/(?<=Tlt|tlp|tls|tla)(Tlt|tlp|tls|tla)\b/
+					/(?<=Tlt|tlp|tls|tla)(Tlt|tlp|tls|tla)\b/,
 				);
 
 				var a = [s1[1], d1[1]];
@@ -845,18 +838,18 @@ function rollgeno() {
 
 				var random = [a, b, c, d];
 				var random = random[Math.floor(Math.random() * 4)];
-				var sortOrder = ["Tlt", "tlp", "tls", "tla"];
+				var sortOrder = ['Tlt', 'tlp', 'tls', 'tla'];
 				random.sort(function (a, b) {
 					return sortOrder.indexOf(a) - sortOrder.indexOf(b);
 				});
-				var random = random.join("");
+				var random = random.join('');
 				puppy.push(random);
 			}
 
 			if (cstailshape != -1 && cdtailshape != -1) {
 				rolltailshape();
 			} else {
-				puppy.push("??");
+				puppy.push('??');
 			}
 
 			//littersize
@@ -876,30 +869,30 @@ function rollgeno() {
 
 				var random = [a, b, c, d];
 				var random = random[Math.floor(Math.random() * 4)];
-				var sortOrder = ["L", "l"];
+				var sortOrder = ['L', 'l'];
 				random.sort(function (a, b) {
 					return sortOrder.indexOf(a) - sortOrder.indexOf(b);
 				});
-				var random = random.join("");
+				var random = random.join('');
 				puppy.push(random);
 			}
 
 			if (cslittersize != -1 && cdlittersize != -1) {
 				rolllittersize();
 			} else {
-				puppy.push("??");
+				puppy.push('??');
 			}
 		}
 		coat();
 	} // end rollcoat();
 
 	function phenoreader() {
-		pheno = [" "];
+		pheno = [' '];
 
 		var tffix = puppy.toString();
-		var tffix = tffix.replace(/,\+,/g, " + ");
-		var tffix = tffix.replace(/,/, "");
-		var tffix = tffix.replace(/,/g, " ");
+		var tffix = tffix.replace(/,\+,/g, ' + ');
+		var tffix = tffix.replace(/,/, '');
+		var tffix = tffix.replace(/,/g, ' ');
 		var tffix = tffix.trim();
 		var temppuppy = tffix;
 
@@ -908,65 +901,65 @@ function rollgeno() {
 				if (temppuppy.search(/\b(ZZ|Zz)\b/) != -1) {
 					if (
 						temppuppy.search(
-							/\b(YdYd|Ydya|Ydys|Ydyg|Ydyb|Ydyc)\b/
+							/\b(YdYd|Ydya|Ydys|Ydyg|Ydyb|Ydyc)\b/,
 						) != -1
 					) {
-						pheno.push("Dark Yellow");
+						pheno.push('Dark Yellow');
 					} else if (
 						temppuppy.search(
-							/\b(yaya|yays|yayg|yayb|yayc)\b/
+							/\b(yaya|yays|yayg|yayb|yayc)\b/,
 						) != -1
 					) {
-						pheno.push("Ash Yellow");
+						pheno.push('Ash Yellow');
 					} else if (
 						temppuppy.search(/\b(ysys|ysyg|ysyb|ysyc)\b/) !=
 						-1
 					) {
-						pheno.push("Sunset Yellow");
+						pheno.push('Sunset Yellow');
 					} else if (
 						temppuppy.search(/\b(ygyg|ygyb|ygyc)\b/) != -1
 					) {
-						pheno.push("Golden Yellow");
+						pheno.push('Golden Yellow');
 					} else if (temppuppy.search(/\b(ybyb|ybyc)\b/) != -1) {
-						pheno.push("Bright Yellow");
+						pheno.push('Bright Yellow');
 					} else if (temppuppy.search(/\b(ycyc)\b/) != -1) {
-						pheno.push("Cream Yellow");
+						pheno.push('Cream Yellow');
 					} else {
-						pheno.push("Yellow error");
+						pheno.push('Yellow error');
 					}
 				} else if (temppuppy.search(/\b(zz)\b/) != -1) {
 					if (
 						temppuppy.search(
-							/\b(DncDnc|Dncdna|Dncdnt|Dncdnd|Dncdnl|Dncdns)\b/
+							/\b(DncDnc|Dncdna|Dncdnt|Dncdnd|Dncdnl|Dncdns)\b/,
 						) != -1
 					) {
-						pheno.push("Chestnut Dune");
+						pheno.push('Chestnut Dune');
 					} else if (
 						temppuppy.search(
-							/\b(dnadna|dnadnt|dnadnd|dnadnl|dnadns)\b/
+							/\b(dnadna|dnadnt|dnadnd|dnadnl|dnadns)\b/,
 						) != -1
 					) {
-						pheno.push("Dark Dune");
+						pheno.push('Dark Dune');
 					} else if (
 						temppuppy.search(
-							/\b(dntdnt|dntdnd|dntdnl|dntdns)\b/
+							/\b(dntdnt|dntdnd|dntdnl|dntdns)\b/,
 						) != -1
 					) {
-						pheno.push("Terracotta Dune");
+						pheno.push('Terracotta Dune');
 					} else if (
 						temppuppy.search(/\b(dnddnd|dnddnl|dnddns)\b/) !=
 						-1
 					) {
-						pheno.push("Dune");
+						pheno.push('Dune');
 					} else if (
 						temppuppy.search(/\b(dnldnl|dnldns)\b/) != -1
 					) {
-						pheno.push("Light Dune");
+						pheno.push('Light Dune');
 					} else if (temppuppy.search(/\b(dnsdns)\b/) != -1) {
-						pheno.push("Sand Dune");
+						pheno.push('Sand Dune');
 					}
 				} else {
-					pheno.push("Z error");
+					pheno.push('Z error');
 				}
 			} // normalbase();
 
@@ -974,14 +967,14 @@ function rollgeno() {
 			if (temppuppy.search(/\b(DD|Dd|Ddi)\b/) != -1) {
 				// console.log("no dilute");
 			} else if (temppuppy.search(/\b(dd)\b/) != -1) {
-				pheno.push("Dilute");
+				pheno.push('Dilute');
 			} else if (temppuppy.search(/\b(ddi)\b/) != -1) {
-				pheno.push("Double Dilute");
+				pheno.push('Double Dilute');
 			} else if (temppuppy.search(/\b(didi)\b/) != -1) {
 				//   console.log('yas');
-				pheno.push("Lethal White");
+				pheno.push('Lethal White');
 			} else {
-				console.log("Dilute error");
+				console.log('Dilute error');
 			}
 
 			if (temppuppy.search(/\b(MxMx|Mxmxx|Mxmxd)\b/) != -1) {
@@ -992,15 +985,15 @@ function rollgeno() {
 					normalbase();
 				} else if (x >= 75) {
 					if (temppuppy.search(/\b(ZZ|Zz)\b/) != -1) {
-						pheno.push("Hazel Yellow");
-						pheno.push("(");
+						pheno.push('Hazel Yellow');
+						pheno.push('(');
 						normalbase();
-						pheno.push(")");
+						pheno.push(')');
 					} else if (temppuppy.search(/\b(zz)\b/) != -1) {
-						pheno.push("Seal Dune");
-						pheno.push("(");
+						pheno.push('Seal Dune');
+						pheno.push('(');
 						normalbase();
-						pheno.push(")");
+						pheno.push(')');
 					}
 				}
 			} else if (temppuppy.search(/\b(mxdmxd)\b/) != -1) {
@@ -1009,9 +1002,9 @@ function rollgeno() {
 					normalbase();
 				} else if (x >= 75) {
 					if (temppuppy.search(/\b(ZZ|Zz)\b/) != -1) {
-						pheno.push("Yellow Dusk");
+						pheno.push('Yellow Dusk');
 					} else if (temppuppy.search(/\b(zz)\b/) != -1) {
-						pheno.push("Dusk Dune");
+						pheno.push('Dusk Dune');
 					}
 				}
 			} else if (temppuppy.search(/\b(mxxmxd)\b/) != -1) {
@@ -1020,82 +1013,82 @@ function rollgeno() {
 					normalbase();
 				} else if (x >= 85) {
 					if (temppuppy.search(/\b(ZZ|Zz)\b/) != -1) {
-						pheno.push("Hazel Yellow");
-						pheno.push("(");
+						pheno.push('Hazel Yellow');
+						pheno.push('(');
 						normalbase();
-						pheno.push(")");
+						pheno.push(')');
 					} else if (temppuppy.search(/\b(zz)\b/) != -1) {
-						pheno.push("Seal Dune");
-						pheno.push("(");
+						pheno.push('Seal Dune');
+						pheno.push('(');
 						normalbase();
-						pheno.push(")");
+						pheno.push(')');
 					}
 				}
 			} else {
-				console.log("Mixed error");
+				console.log('Mixed error');
 			}
 
 			if (temppuppy.search(/\b(SS)\b/) != -1) {
-				pheno.push("Bicolor");
+				pheno.push('Bicolor');
 			} else if (
 				temppuppy.search(/\b(Ssi|Ssp|sisi|sisp|spsp)\b/) != -1
 			) {
-				pheno.push("Tricolor");
+				pheno.push('Tricolor');
 			}
 		}
 		phenobasecoat();
 
-		pheno.push("with");
+		pheno.push('with');
 
 		function phenomarkings() {
 			if (temppuppy.search(/(StbStb)/) != -1) {
-				pheno.push("Solid Inverse Body Stripes.");
+				pheno.push('Solid Inverse Body Stripes.');
 			} else if (temppuppy.search(/(Stbsth)/) != -1) {
-				pheno.push("Light Inverse Body Stripes.");
+				pheno.push('Light Inverse Body Stripes.');
 			} else if (temppuppy.search(/(Stbstl)/) != -1) {
-				pheno.push("Medium Inverse Body Stripes.");
+				pheno.push('Medium Inverse Body Stripes.');
 			} else if (temppuppy.search(/(Stbstr)/) != -1) {
-				pheno.push("Heavy Inverse Body Stripes.");
+				pheno.push('Heavy Inverse Body Stripes.');
 			} else if (temppuppy.search(/(sthsth)/) != -1) {
-				pheno.push("Heavy Body Stripes.");
+				pheno.push('Heavy Body Stripes.');
 			} else if (temppuppy.search(/(sthstl|sthstr)/) != -1) {
-				pheno.push("Medium Body Stripes.");
+				pheno.push('Medium Body Stripes.');
 			} else if (temppuppy.search(/(stlstl|stlstr)/) != -1) {
-				pheno.push("Light Body Stripes.");
+				pheno.push('Light Body Stripes.');
 			} else if (temppuppy.search(/(strstr)/) != -1) {
-				pheno.push("Restricted Body Stripes.");
+				pheno.push('Restricted Body Stripes.');
 			} else {
-				pheno.push("bodystripes Error.");
+				pheno.push('bodystripes Error.');
 			}
 
 			if (temppuppy.search(/(LtbLtb)/) != -1) {
-				pheno.push("Solid Inverse Leg Stripes.");
+				pheno.push('Solid Inverse Leg Stripes.');
 			} else if (temppuppy.search(/(Ltblth)/) != -1) {
-				pheno.push("Light Inverse Leg Stripes.");
+				pheno.push('Light Inverse Leg Stripes.');
 			} else if (temppuppy.search(/(Ltbltl)/) != -1) {
-				pheno.push("Medium Inverse Leg Stripes.");
+				pheno.push('Medium Inverse Leg Stripes.');
 			} else if (temppuppy.search(/(Ltbltr)/) != -1) {
-				pheno.push("Heavy Inverse Leg Stripes.");
+				pheno.push('Heavy Inverse Leg Stripes.');
 			} else if (temppuppy.search(/(lthlth)/) != -1) {
-				pheno.push("Heavy Leg Stripes.");
+				pheno.push('Heavy Leg Stripes.');
 			} else if (temppuppy.search(/(lthltl|lthltr)/) != -1) {
-				pheno.push("Medium Leg Stripes.");
+				pheno.push('Medium Leg Stripes.');
 			} else if (temppuppy.search(/(ltlltl|ltlltr)/) != -1) {
-				pheno.push("Light Leg Stripes.");
+				pheno.push('Light Leg Stripes.');
 			} else if (temppuppy.search(/(ltrltr)/) != -1) {
-				pheno.push("Restricted Leg Stripes.");
+				pheno.push('Restricted Leg Stripes.');
 			} else {
-				pheno.push("legstripes Error.");
+				pheno.push('legstripes Error.');
 			}
 
 			if (temppuppy.search(/(PtPt|Ptpts|Ptptb)/) != -1) {
 				// console.log("no spinal stripes");
 			} else if (temppuppy.search(/(ptspts|ptsptb)/) != -1) {
-				pheno.push("Spinal Stripes.");
+				pheno.push('Spinal Stripes.');
 			} else if (temppuppy.search(/(ptbptb)/) != -1) {
-				pheno.push("Blanket Stripes.");
+				pheno.push('Blanket Stripes.');
 			} else {
-				pheno.push("spinalstripes Error");
+				pheno.push('spinalstripes Error');
 			}
 
 			if (temppuppy.search(/(BsBs|Bsbsk|Bsbss|Bsbsi|Bsbsc)/) != -1) {
@@ -1103,41 +1096,41 @@ function rollgeno() {
 			} else if (
 				temppuppy.search(/(bskbsk|bskbss|bskbsi|bskbsc)/) != -1
 			) {
-				pheno.push("Black Socks.");
+				pheno.push('Black Socks.');
 			} else if (temppuppy.search(/(bssbss|bssbsi|bssbsc)/) != -1) {
-				pheno.push("Black Spotting.");
+				pheno.push('Black Spotting.');
 			} else if (temppuppy.search(/(bsibsi|bsibsc)/) != -1) {
-				pheno.push("Black Irish.");
+				pheno.push('Black Irish.');
 			} else if (temppuppy.search(/(bscbsc)/) != -1) {
-				pheno.push("Black Collared Irish.");
+				pheno.push('Black Collared Irish.');
 			} else {
-				pheno.push("blackspotting Error");
+				pheno.push('blackspotting Error');
 			}
 
 			if (temppuppy.search(/(BpBp|Bpbp)/) != -1) {
 				// console.log("no black points");
 			} else if (temppuppy.search(/(bpbp)/) != -1) {
-				pheno.push("Black Points.");
+				pheno.push('Black Points.');
 			} else {
-				pheno.push("blackpoints Error");
+				pheno.push('blackpoints Error');
 			}
 
 			if (temppuppy.search(/(BmBm|Bmbm)/) != -1) {
-				pheno.push("Black Mask.");
+				pheno.push('Black Mask.');
 			} else if (temppuppy.search(/(bmbm)/) != -1) {
 				// console.log("no black mask");
 			} else {
-				pheno.push("blackmask Error");
+				pheno.push('blackmask Error');
 			}
 
 			if (temppuppy.search(/(BdBd|Bdbd|Bdbdd)/) != -1) {
-				pheno.push("Dorsal Strip.");
+				pheno.push('Dorsal Strip.');
 			} else if (temppuppy.search(/(bddbdd)/) != -1) {
-				pheno.push("Dorsal Dun.");
+				pheno.push('Dorsal Dun.');
 			} else if (temppuppy.search(/(bdbd)/) != -1) {
 				// console.log("no dorsal strip");
 			} else {
-				pheno.push("dorsalstrip Error");
+				pheno.push('dorsalstrip Error');
 			}
 
 			if (temppuppy.search(/(SdlSdl|Sdlsdl)/) != -1) {
@@ -1149,22 +1142,22 @@ function rollgeno() {
 			) {
 				var x = roller(100);
 				if (x <= 25) {
-					pheno.push("Blanket Saddle.");
+					pheno.push('Blanket Saddle.');
 				} else if (x >= 26) {
-					pheno.push("Saddleback.");
+					pheno.push('Saddleback.');
 				}
 			} else if (temppuppy.search(/(sdlsdl)/) != -1) {
-				pheno.push("Saddleback.");
+				pheno.push('Saddleback.');
 			} else {
-				pheno.push("saddleback Error");
+				pheno.push('saddleback Error');
 			}
 
 			if (temppuppy.search(/(JbkJbk|Jbkjbk)/) != -1) {
 				// console.log("no jackalback");
 			} else if (temppuppy.search(/(jbkjbk)/) != -1) {
-				pheno.push("Jackalback.");
+				pheno.push('Jackalback.');
 			} else {
-				pheno.push("jackalback Error");
+				pheno.push('jackalback Error');
 			}
 
 			if (temppuppy.search(/(FF|Ff)/) != -1) {
@@ -1175,95 +1168,95 @@ function rollgeno() {
 				(temppuppy.search(/(ff)/) != -1 &&
 					temppuppy.search(/(jbkjbk)/) != -1)
 			) {
-				pheno.push("Frosting.");
+				pheno.push('Frosting.');
 			} else if (temppuppy.search(/(ff)/) != -1) {
-				pheno.push("(Frosting carrier).");
+				pheno.push('(Frosting carrier).');
 			} else {
-				pheno.push("frosting Error");
+				pheno.push('frosting Error');
 			}
 
 			if (temppuppy.search(/(UU|Uu)/) != -1) {
 				// console.log("no urajiro");
 			} else if (temppuppy.search(/(Uutgr)/) != -1) {
-				pheno.push("Minimal Tiger Urajiro.");
+				pheno.push('Minimal Tiger Urajiro.');
 			} else if (temppuppy.search(/(utgrutgr|utgru)/) != -1) {
-				pheno.push("Full Tiger Urajiro.");
+				pheno.push('Full Tiger Urajiro.');
 			} else if (temppuppy.search(/(uu)/) != -1) {
-				pheno.push("Normal Urajiro.");
+				pheno.push('Normal Urajiro.');
 			} else {
-				pheno.push("urajiro Error");
+				pheno.push('urajiro Error');
 			}
 
 			if (temppuppy.search(/(SS)/) != -1) {
 				// console.log("no urajiro");
 			} else if (temppuppy.search(/(Ssi|Ssp)/) != -1) {
-				pheno.push("White Spotting.");
+				pheno.push('White Spotting.');
 			} else if (temppuppy.search(/(sisi)/) != -1) {
-				pheno.push("White Irish.");
+				pheno.push('White Irish.');
 			} else if (temppuppy.search(/(sisp)/) != -1) {
-				pheno.push("White Collared Irish.");
+				pheno.push('White Collared Irish.');
 			} else if (temppuppy.search(/(spsp)/) != -1) {
-				pheno.push("Piebald White.");
+				pheno.push('Piebald White.');
 			} else {
-				pheno.push("whitespotting Error");
+				pheno.push('whitespotting Error');
 			}
 
 			if (temppuppy.search(/(EcEc)/) != -1) {
-				pheno.push("Dark Blue Eyes.");
+				pheno.push('Dark Blue Eyes.');
 			} else if (temppuppy.search(/(Ecec)/) != -1) {
-				pheno.push("Medium Blue Eyes.");
+				pheno.push('Medium Blue Eyes.');
 			} else if (temppuppy.search(/(ecec)/) != -1) {
-				pheno.push("Light Blue Eyes.");
+				pheno.push('Light Blue Eyes.');
 			} else {
-				pheno.push("eyeshade Error");
+				pheno.push('eyeshade Error');
 			}
 
 			if (temppuppy.search(/(ExEx|Exexw|Exex)/) != -1) {
-				pheno.push("Wadjet Eyes (Even).");
+				pheno.push('Wadjet Eyes (Even).');
 			} else if (temppuppy.search(/(exwexw|exwex)/) != -1) {
-				pheno.push("Uto Eyes (Split).");
+				pheno.push('Uto Eyes (Split).');
 			} else if (temppuppy.search(/(exex)/) != -1) {
-				pheno.push("Horus Eyes (Odd).");
+				pheno.push('Horus Eyes (Odd).');
 			} else {
-				pheno.push("eyechromia Error");
+				pheno.push('eyechromia Error');
 			}
 
 			if (temppuppy.search(/(NN)/) != -1) {
 				// console.log("solid nose");
 			} else if (temppuppy.search(/(Nn)/) != -1) {
-				pheno.push("Butterfly Nose.");
+				pheno.push('Butterfly Nose.');
 			} else if (temppuppy.search(/(nn)/) != -1) {
-				pheno.push("Dudley Nose.");
+				pheno.push('Dudley Nose.');
 			} else {
-				pheno.push("nosepigment Error");
+				pheno.push('nosepigment Error');
 			}
 
 			if (temppuppy.search(/(CtsCts|Ctsctm)/) != -1) {
 				// console.log("Smooth Coat");
 			} else if (temppuppy.search(/(ctmctm)/) != -1) {
-				pheno.push("Feathered Coat.");
+				pheno.push('Feathered Coat.');
 			} else {
-				pheno.push("coathlength Error");
+				pheno.push('coathlength Error');
 			}
 
 			if (temppuppy.search(/(RgRg|Rgrg)/) != -1) {
 				// console.log("Smooth Coat");
 			} else if (temppuppy.search(/(rgrg)/) != -1) {
-				pheno.push("Crested Nudari Variety.");
+				pheno.push('Crested Nudari Variety.');
 			} else {
-				pheno.push("crestvariety Error");
+				pheno.push('crestvariety Error');
 			}
 
 			if (temppuppy.search(/(TltTlt|TltTlttlp|Tlttls|Tlttla)/) != -1) {
-				pheno.push("Straight Tail.");
+				pheno.push('Straight Tail.');
 			} else if (temppuppy.search(/(tlptlp|tlptls|tlptla)/) != -1) {
-				pheno.push("Spiral Tail.");
+				pheno.push('Spiral Tail.');
 			} else if (temppuppy.search(/(tlstls|tlstla)/) != -1) {
-				pheno.push("Sickle Tail.");
+				pheno.push('Sickle Tail.');
 			} else if (temppuppy.search(/(tlatla)/) != -1) {
-				pheno.push("Saber Tail.");
+				pheno.push('Saber Tail.');
 			} else {
-				pheno.push("tailshape Error");
+				pheno.push('tailshape Error');
 			}
 
 			/* if (temppuppy.search(/(TltTlt|TltTlttlp|Tlttls|Tlttla)/) != -1) {
@@ -1278,33 +1271,33 @@ function rollgeno() {
 		}
 		phenomarkings();
 
-		if (pheno.indexOf("Lethal White") != -1) {
+		if (pheno.indexOf('Lethal White') != -1) {
 			if (roller(5) <= 4) {
-				pheno = ["Stillborn"];
+				pheno = ['Stillborn'];
 			}
 		}
 	} // end phenoreader();
 
 	function outputpuppy() {
-		puppy = [" "];
-		pheno = [" "];
+		puppy = [' '];
+		pheno = [' '];
 
 		rollcoat();
 		var pfix = puppy.toString();
-		var pfix = pfix.replace(/,\+,/g, " + ");
-		var pfix = pfix.replace(/,/, "");
-		var pfix = pfix.replace(/,/g, " ");
+		var pfix = pfix.replace(/,\+,/g, ' + ');
+		var pfix = pfix.replace(/,/, '');
+		var pfix = pfix.replace(/,/g, ' ');
 		var pfix = pfix.trim();
 		puppyfinal = pfix;
 
 		phenoreader();
 
 		var pfix = pheno.toString();
-		var pfix = pfix.replace(/\s,/g, "");
-		var pfix = pfix.replace(/,/g, " ");
-		var pfix = pfix.replace(/\./g, ",");
-		var pfix = pfix.replace(/,$/g, "");
-		phenofinal = pfix.replace(/  /g, " ");
+		var pfix = pfix.replace(/\s,/g, '');
+		var pfix = pfix.replace(/,/g, ' ');
+		var pfix = pfix.replace(/\./g, ',');
+		var pfix = pfix.replace(/,$/g, '');
+		phenofinal = pfix.replace(/  /g, ' ');
 	} // end outputpuppy();
 
 	function multipuppy() {
@@ -1327,29 +1320,33 @@ function rollgeno() {
 
 			var random = [a, b, c, d];
 			var random = random[Math.floor(Math.random() * 4)];
-			var sortOrder = ["L", "l"];
+			var sortOrder = ['L', 'l'];
 			random.sort(function (a, b) {
 				return sortOrder.indexOf(a) - sortOrder.indexOf(b);
 			});
-			var random = random.join("");
+			var random = random.join('');
 
-			if (random === "LL") {
+			if (random === 'LL') {
 				var sizes = [8, 7, 7];
 				pupTotal = sizes[Math.floor(Math.random() * sizes.length)];
-			} else if (random === "Ll") {
+			} else if (random === 'Ll') {
 				var sizes = [6, 5, 5];
 				pupTotal = sizes[Math.floor(Math.random() * sizes.length)];
-			} else if (random === "ll") {
+			} else if (random === 'll') {
 				var sizes = [4, 3, 3];
 				pupTotal = sizes[Math.floor(Math.random() * sizes.length)];
 			}
 		}
 
 		if (cslittersize != -1 && cdlittersize != -1) {
-			document.getElementById("warning").classList.add("invisible");
 			littersize();
 		} else {
-			document.getElementById("warning").classList.remove("invisible");
+			const warningDiv = document.createElement('div');
+			warningDiv.classList.add('col-span-2');
+			warningDiv.innerText = `Check Litter Size Genes`;
+			document
+				.getElementById('puppy-container')
+				.appendChild(warningDiv);
 			return;
 		}
 
@@ -1366,22 +1363,30 @@ function rollgeno() {
 				pheno: phenofinal,
 			};
 
-			const puppyDiv = document.createElement("div");
+			const puppyDiv = document.createElement('div');
 			puppyDiv.classList.add(
-				"puppy-output",
-				"col-span-2",
-				"md:col-span-1"
+				'puppy-output',
+				'col-span-2',
+				'md:col-span-1',
 			);
-			puppyDiv.innerText = `Puppy ${pupNum}
+			puppyDiv.innerHTML = `
+				<div>
+					<b>Puppy ${pupNum} - Option A</b>
+					<br>
+					Genotype: ${pupA.geno}
+					<br>
+					Phenotype: ${pupA.pheno}
+				</div>
 
-			Option A
-			Genotype: ${pupA.geno}
-			Phenotype: ${pupA.pheno}
-			
-			Option B
-			Genotype: ${pupB.geno}
-			Phenotype: ${pupB.pheno}`;
-			document.getElementById("puppy-container").appendChild(puppyDiv);
+				<div class="mt-2">
+					<b>Puppy ${pupNum} - Option B</b>
+					<br>
+					Genotype: ${pupB.geno}
+					<br>
+					Phenotype: ${pupB.pheno}
+				</div>
+				`;
+			document.getElementById('puppy-container').appendChild(puppyDiv);
 		}
 
 		for (let i = 1; i <= pupTotal; i++) {
