@@ -5,3 +5,7 @@
 a {
 	@apply underline hover:text-stone-500;
 }
+
+::selection {
+	@apply bg-orange-300;
+}
