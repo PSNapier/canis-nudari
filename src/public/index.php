@@ -12,11 +12,11 @@
 	/>
 
 	<!-- Style -->
-	<link href="output.css" rel="stylesheet" />
+	<link href="output.css?v=<?php echo time(); ?>" rel="stylesheet" />
 	<!-- <script src="https://cdn.tailwindcss.com"></script> -->
 
 	<!-- Scripts -->
-	<script src="script.js" defer></script>
+	<script src="script.js?v=<?php echo time(); ?>" defer></script>
 </head>
 
 <!-- items-center isn't working as expected for some reason, so overriding with inline-style, ditto for scroll -->
