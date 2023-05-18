@@ -1231,11 +1231,16 @@ function rollgeno() {
 				pheno.push('nosepigment Error');
 			}
 
-			if (temppuppy.search(/(CtsCts|Ctsctm)/) != -1) {
+			if (temppuppy.search(/(CtsCts)/) != -1) {
 				// console.log("Smooth Coat");
-			} else if (temppuppy.search(/(ctmctm)/) != -1) {
+			}
+			else if (temppuppy.search(/(Ctsctm)/) != -1) {
 				pheno.push('Feathered Coat.');
-			} else {
+			}
+			else if (temppuppy.search(/(ctmctm)/) != -1) {
+				pheno.push('Primative Coat.');
+			}
+			else {
 				pheno.push('coathlength Error');
 			}
 
