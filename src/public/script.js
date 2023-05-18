@@ -1175,15 +1175,20 @@ function rollgeno() {
 				pheno.push('frosting Error');
 			}
 
-			if (temppuppy.search(/(UU|Uu)/) != -1) {
+			if (temppuppy.search(/\b(UU|Uu)\b/) != -1) {
 				// console.log("no urajiro");
-			} else if (temppuppy.search(/(Uutgr)/) != -1) {
-				pheno.push('Minimal Tiger Urajiro.');
-			} else if (temppuppy.search(/(utgrutgr|utgru)/) != -1) {
-				pheno.push('Full Tiger Urajiro.');
-			} else if (temppuppy.search(/(uu)/) != -1) {
+			} 
+			else if (temppuppy.search(/(Uutgr)/) != -1) {
+				console.log('yas');
+				pheno.push('Tiger Urajiro (Minimal).');
+			} 
+			else if (temppuppy.search(/(utgrutgr|utgru)/) != -1) {
+				pheno.push('Tiger Urajiro.');
+			} 
+			else if (temppuppy.search(/(uu)/) != -1) {
 				pheno.push('Normal Urajiro.');
-			} else {
+			} 
+			else {
 				pheno.push('urajiro Error');
 			}
 
