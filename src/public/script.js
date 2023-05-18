@@ -1247,7 +1247,7 @@ function rollgeno() {
 				pheno.push('crestvariety Error');
 			}
 
-			if (temppuppy.search(/(TltTlt|TltTlttlp|Tlttls|Tlttla)/) != -1) {
+			if (temppuppy.search(/(TltTlt|Tlttlp|Tlttls|Tlttla)/) != -1) {
 				pheno.push('Straight Tail.');
 			} else if (temppuppy.search(/(tlptlp|tlptls|tlptla)/) != -1) {
 				pheno.push('Spiral Tail.');
