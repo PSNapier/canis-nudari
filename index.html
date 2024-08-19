@@ -11,18 +11,16 @@
 		href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🐕</text></svg>"
 	/>
 
-	<!-- Style -->
-	<link href="output.css?v=<?php echo time(); ?>" rel="stylesheet" />
-	<!-- <script src="https://cdn.tailwindcss.com"></script> -->
+	<link href="css/output.css" rel="stylesheet" />
 
-	<!-- Scripts -->
-	<script src="script.js?v=<?php echo time(); ?>" defer></script>
+	<script src="js/toolbox.js" defer></script>
+	<script src="js/logic.js" defer></script>
+	<script src="js/dictionary.js" defer></script>
 </head>
 
-<!-- items-center isn't working as expected for some reason, so overriding with inline-style, ditto for scroll -->
 <body
 	style="
-		background-image: url('img-dunes.png');
+		background-image: url('css/img-dunes.png');
 		align-items: center;
 		overflow-y: scroll;
 	"

@@ -37,198 +37,28 @@ function rollgeno() {
 
 	function rollcoat() {
 		function basecoat() {
-			//silver
-			var cssilver = ssplit.search(/\b(ZZ|Zz|zz)\b/);
-			var cdsilver = dsplit.search(/\b(ZZ|Zz|zz)\b/);
+			dictionary.bases.forEach((base) => {
+				let regex = new RegExp(`\\b(${base[1].join('|')})(${base[1].join('|')})\\b`, 'i');
 
-			function rollsilver() {
-				var s1 = ssplit.match(/\b(Z|z)(?=Z|z)/);
-				var s2 = ssplit.match(/(?<=Z|z)(Z|z)\b/);
-				var d1 = dsplit.match(/\b(Z|z)(?=Z|z)/);
-				var d2 = dsplit.match(/(?<=Z|z)(Z|z)\b/);
-
-				var a = s1[1].concat(d1[1]);
-				var b = s1[1].concat(d2[1]);
-				var c = s2[1].concat(d1[1]);
-				var d = s2[1].concat(d2[1]);
-
-				var random = [a, b, c, d];
-				var random = random.map((x) => x.replace('zZ', 'Zz'));
-				var random = random[Math.floor(Math.random() * 4)];
-
-				puppy.push(random);
-			}
-
-			if (cssilver != -1 && cdsilver != -1) {
-				rollsilver();
-			} else {
-				puppy.push('??');
-			}
-
-			//yellow
-			var csyellow = ssplit.search(
-				/\b(Yd|ya|ys|yg|yb|yc)(Yd|ya|ys|yg|yb|yc)\b/,
-			);
-			var cdyellow = dsplit.search(
-				/\b(Yd|ya|ys|yg|yb|yc)(Yd|ya|ys|yg|yb|yc)\b/,
-			);
-
-			function rollyellow() {
-				var s1 = ssplit.match(
-					/\b(Yd|ya|ys|yg|yb|yc)(?=Yd|ya|ys|yg|yb|yc)/,
-				);
-				var s2 = ssplit.match(
-					/(?<=Yd|ya|ys|yg|yb|yc)(Yd|ya|ys|yg|yb|yc)\b/,
-				);
-				var d1 = dsplit.match(
-					/\b(Yd|ya|ys|yg|yb|yc)(?=Yd|ya|ys|yg|yb|yc)/,
-				);
-				var d2 = dsplit.match(
-					/(?<=Yd|ya|ys|yg|yb|yc)(Yd|ya|ys|yg|yb|yc)\b/,
-				);
-
-				var a = [s1[1], d1[1]];
-				var b = [s1[1], d2[1]];
-				var c = [s2[1], d1[1]];
-				var d = [s2[1], d2[1]];
-
-				var random = [a, b, c, d];
-				var random = random[Math.floor(Math.random() * 4)];
-				var sortOrder = ['Yd', 'ya', 'ys', 'yg', 'yb', 'yc'];
-				random.sort(function (a, b) {
-					return sortOrder.indexOf(a) - sortOrder.indexOf(b);
-				});
-				var random = random.join('');
-				puppy.push(random);
-			}
-
-			if (csyellow != -1 && cdyellow != -1) {
-				rollyellow();
-			} else {
-				puppy.push('??');
-			}
-
-			//dune
-			var csdune = ssplit.search(
-				/\b(Dnc|dna|dnt|dnd|dnl|dns)(Dnc|dna|dnt|dnd|dnl|dns)\b/,
-			);
-			var cddune = dsplit.search(
-				/\b(Dnc|dna|dnt|dnd|dnl|dns)(Dnc|dna|dnt|dnd|dnl|dns)\b/,
-			);
-
-			function rolldune() {
-				var s1 = ssplit.match(
-					/\b(Dnc|dna|dnt|dnd|dnl|dns)(?=Dnc|dna|dnt|dnd|dnl|dns)/,
-				);
-				var s2 = ssplit.match(
-					/(?<=Dnc|dna|dnt|dnd|dnl|dns)(Dnc|dna|dnt|dnd|dnl|dns)\b/,
-				);
-				var d1 = dsplit.match(
-					/\b(Dnc|dna|dnt|dnd|dnl|dns)(?=Dnc|dna|dnt|dnd|dnl|dns)/,
-				);
-				var d2 = dsplit.match(
-					/(?<=Dnc|dna|dnt|dnd|dnl|dns)(Dnc|dna|dnt|dnd|dnl|dns)\b/,
-				);
-
-				var a = [s1[1], d1[1]];
-				var b = [s1[1], d2[1]];
-				var c = [s2[1], d1[1]];
-				var d = [s2[1], d2[1]];
-
-				var random = [a, b, c, d];
-				var random = random[Math.floor(Math.random() * 4)];
-				var sortOrder = ['Dnc', 'dna', 'dnt', 'dnd', 'dnl', 'dns'];
-				random.sort(function (a, b) {
-					return sortOrder.indexOf(a) - sortOrder.indexOf(b);
-				});
-				var random = random.join('');
-				puppy.push(random);
-			}
-
-			if (csdune != -1 && cddune != -1) {
-				rolldune();
-			} else {
-				puppy.push('??');
-			}
-
-			//mix
-			var csmix = ssplit.search(/\b(Mx|mxx|mxd)(Mx|mxx|mxd)\b/);
-			var cdmix = dsplit.search(/\b(Mx|mxx|mxd)(Mx|mxx|mxd)\b/);
-
-			function rollmix() {
-				var s1 = ssplit.match(/\b(Mx|mxx|mxd)(?=Mx|mxx|mxd)/);
-				var s2 = ssplit.match(/(?<=Mx|mxx|mxd)(Mx|mxx|mxd)\b/);
-				var d1 = dsplit.match(/\b(Mx|mxx|mxd)(?=Mx|mxx|mxd)/);
-				var d2 = dsplit.match(/(?<=Mx|mxx|mxd)(Mx|mxx|mxd)\b/);
-
-				var a = [s1[1], d1[1]];
-				var b = [s1[1], d2[1]];
-				var c = [s2[1], d1[1]];
-				var d = [s2[1], d2[1]];
-
-				var random = [a, b, c, d];
-				var random = random[Math.floor(Math.random() * 4)];
-				var sortOrder = ['Mx', 'mxx', 'mxd'];
-				random.sort(function (a, b) {
-					return sortOrder.indexOf(a) - sortOrder.indexOf(b);
-				});
-				var random = random.join('');
-				puppy.push(random);
-			}
-
-			if (csmix != -1 && cdmix != -1) {
-				rollmix();
-			} else {
-				puppy.push('??');
-			}
-
-			//dilute
-			var csdilute = ssplit.search(/\b(D|d|di)(D|d|di)\b/);
-			var cddilute = dsplit.search(/\b(D|d|di)(D|d|di)\b/);
-
-			function rolldilute() {
-				var s1 = ssplit.match(/\b(D|d|di)(?=D|d|di)/);
-				var s2 = ssplit.match(/(?<=D|d|di)(D|d|di)\b/);
-				var d1 = dsplit.match(/\b(D|d|di)(?=D|d|di)/);
-				var d2 = dsplit.match(/(?<=D|d|di)(D|d|di)\b/);
-
-				var a = [s1[1], d1[1]];
-				var b = [s1[1], d2[1]];
-				var c = [s2[1], d1[1]];
-				var d = [s2[1], d2[1]];
-
-				var random = [a, b, c, d];
-				var random = random[Math.floor(Math.random() * 4)];
-				var sortOrder = ['D', 'd', 'di'];
-				random.sort(function (a, b) {
-					return sortOrder.indexOf(a) - sortOrder.indexOf(b);
-				});
-
-				if (
-					ssplit.search(/\b(dd)\b/) != -1 &&
-					dsplit.search(/\b(dd)\b/) != -1
-				) {
-					let x = roller(100);
-					if (x <= 10) {
-						random[0] = 'di';
-						random[1] = 'di';
-					} else if (x <= 35) {
-						random[1] = 'di';
-					}
+				if (ssplit.search(regex) === -1 && dsplit.search(regex) === -1) {
+					return;
 				}
 
-				var random = random.join('');
-				puppy.push(random);
-				if (random === 'didi' && roller(100) <= 80) {
-					puppydeath = 1;
-				}
-			}
+				let regexFirst = new RegExp(`\\b(${base[1].join('|')})(?=(${base[1].join('|')}))`, 'i');
+				let regexSecond = new RegExp(`(?<=(${base[1].join('|')}))(${base[1].join('|')})\\b`, 'i');
+				let s1 = ssplit.match(regexFirst);
+				let s2 = ssplit.match(regexSecond);
+				let d1 = dsplit.match(regexFirst);
+				let d2 = dsplit.match(regexSecond);
 
-			if (csdilute != -1 && cddilute != -1) {
-				rolldilute();
-			} else {
-				puppy.push('??');
-			}
+				let a = [s1[0], d1[0]].sortByArray(base[1]).join('');
+				let b = [s1[0], d2[0]].sortByArray(base[1]).join('');
+				let c = [s2[0], d1[0]].sortByArray(base[1]).join('');
+				let d = [s2[0], d2[0]].sortByArray(base[1]).join('');
+				console.log(a, b, c, d);
+
+				puppy.push(randomizer([a, b, c, d]));
+			});
 		}
 		basecoat();
 
@@ -499,6 +329,38 @@ function rollgeno() {
 				puppy.push('??');
 			}
 
+			
+			//frosting
+			var csfrosting = ssplit.search(/\b(F|f)(F|f)\b/);
+			var cdfrosting = dsplit.search(/\b(F|f)(F|f)\b/);
+
+			function rollfrosting() {
+				var s1 = ssplit.match(/\b(F|f)(?=F|f)/);
+				var s2 = ssplit.match(/(?<=F|f)(F|f)\b/);
+				var d1 = dsplit.match(/\b(F|f)(?=F|f)/);
+				var d2 = dsplit.match(/(?<=F|f)(F|f)\b/);
+
+				var a = [s1[1], d1[1]];
+				var b = [s1[1], d2[1]];
+				var c = [s2[1], d1[1]];
+				var d = [s2[1], d2[1]];
+
+				var random = [a, b, c, d];
+				var random = random[Math.floor(Math.random() * 4)];
+				var sortOrder = ['F', 'f'];
+				random.sort(function (a, b) {
+					return sortOrder.indexOf(a) - sortOrder.indexOf(b);
+				});
+				var random = random.join('');
+				puppy.push(random);
+			}
+
+			if (csfrosting != -1 && cdfrosting != -1) {
+				rollfrosting();
+			} else {
+				puppy.push('??');
+			}
+
 			//saddleback
 			var cssaddleback = ssplit.search(/\b(Sdl|sdl)(Sdl|sdl)\b/);
 			var cdsaddleback = dsplit.search(/\b(Sdl|sdl)(Sdl|sdl)\b/);
@@ -561,36 +423,6 @@ function rollgeno() {
 				puppy.push('??');
 			}
 
-			//frosting
-			var csfrosting = ssplit.search(/\b(F|f)(F|f)\b/);
-			var cdfrosting = dsplit.search(/\b(F|f)(F|f)\b/);
-
-			function rollfrosting() {
-				var s1 = ssplit.match(/\b(F|f)(?=F|f)/);
-				var s2 = ssplit.match(/(?<=F|f)(F|f)\b/);
-				var d1 = dsplit.match(/\b(F|f)(?=F|f)/);
-				var d2 = dsplit.match(/(?<=F|f)(F|f)\b/);
-
-				var a = [s1[1], d1[1]];
-				var b = [s1[1], d2[1]];
-				var c = [s2[1], d1[1]];
-				var d = [s2[1], d2[1]];
-
-				var random = [a, b, c, d];
-				var random = random[Math.floor(Math.random() * 4)];
-				var sortOrder = ['F', 'f'];
-				random.sort(function (a, b) {
-					return sortOrder.indexOf(a) - sortOrder.indexOf(b);
-				});
-				var random = random.join('');
-				puppy.push(random);
-			}
-
-			if (csfrosting != -1 && cdfrosting != -1) {
-				rollfrosting();
-			} else {
-				puppy.push('??');
-			}
 
 			//urajiro
 			var csurajiro = ssplit.search(/\b(U|utgr|u)(U|utgr|u)\b/);
@@ -883,7 +715,7 @@ function rollgeno() {
 				puppy.push('??');
 			}
 		}
-		coat();
+		// coat();
 	} // end rollcoat();
 
 	function phenoreader() {
@@ -1300,7 +1132,7 @@ function rollgeno() {
 		var pfix = pfix.trim();
 		puppyfinal = pfix;
 
-		phenoreader();
+		// phenoreader();
 
 		var pfix = pheno.toString();
 		var pfix = pfix.replace(/\s,/g, '');
