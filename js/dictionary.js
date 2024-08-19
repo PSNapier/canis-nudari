@@ -10,5 +10,23 @@ let dictionary = {
 	coats: [
 		// ['pheno', ['Gene','gene'...]],
 		['body stripes', ['Stb','sth','stl','str']],
+		['leg stripes', ['Ltb','lth','ltl','ltr']],
+		['spinal stripes', ['Pt','pts','ptb']],
+		['black spotting', ['Bs','bsk','bss','bsi','bsc']],
+		['black points', ['Bp','bp']],
+		['black mask', ['Bm','bm']],
+		['dorsal strip', ['Bd','bd','bdd']],
+		['frosting', ['F','f']],
+		['saddleback', ['Sdl','sdl']],
+		['jackalback', ['Jbk','jbk']],
+		['urajiro', ['U','utgr','u']],
+		['white spotting', ['S','si','sp']],
+		['eye shade', ['Ec','ec']],
+		['eye chromia', ['Ex','exw','ex']],
+		['nose pigment', ['N','n']],
+		['coat length', ['Cts','ctm']],
+		['crest variety', ['Rg','rg']],
+		['tail shape', ['Tlt','tlp','tls','tla']],
+		['litter size', ['L','l']],
 	]
 };
