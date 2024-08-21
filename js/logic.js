@@ -39,7 +39,8 @@ function rollgeno() {
 		function rollLogic(gene) {
 			let regex = new RegExp(`\\b(${gene[1].join('|')})(${gene[1].join('|')})\\b`);
 
-			if (ssplit.search(regex) === -1 && dsplit.search(regex) === -1) {
+			if (ssplit.search(regex) === -1 || dsplit.search(regex) === -1) {
+				console.log('yas');
 				return;
 			}
 
