@@ -58,7 +58,7 @@ function rollgeno() {
 			puppy.push(randomizer([a, b, c, d]));
 		}
 
-		[...dictionary.bases, ...dictionary.coats].forEach((gene) => {
+		[...dictionary.bases, ...dictionary.markings, ...dictionary.body].forEach((gene) => {
 			rollLogic(gene);
 		});
 	}
