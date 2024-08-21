@@ -43,17 +43,15 @@ function rollgeno() {
 				return;
 			}
 
-			let regexFirst = new RegExp(`\\b(${gene[1].join('|')})(?=(${gene[1].join('|')}))`, 'i');
-			let regexSecond = new RegExp(`(?<=(${gene[1].join('|')}))(${gene[1].join('|')})\\b`, 'i');
-			let s1 = ssplit.match(regexFirst);
-			let s2 = ssplit.match(regexSecond);
-			let d1 = dsplit.match(regexFirst);
-			let d2 = dsplit.match(regexSecond);
+			let s1 = ssplit.match(regex)[1];
+			let s2 = ssplit.match(regex)[2];
+			let d1 = dsplit.match(regex)[1];
+			let d2 = dsplit.match(regex)[2];
 
-			let a = [s1[0], d1[0]].sortByArray(gene[1]).join('');
-			let b = [s1[0], d2[0]].sortByArray(gene[1]).join('');
-			let c = [s2[0], d1[0]].sortByArray(gene[1]).join('');
-			let d = [s2[0], d2[0]].sortByArray(gene[1]).join('');
+			let a = [s1, d1].sortByArray(gene[1]).join('');
+			let b = [s1, d2].sortByArray(gene[1]).join('');
+			let c = [s2, d1].sortByArray(gene[1]).join('');
+			let d = [s2, d2].sortByArray(gene[1]).join('');
 
 			puppy.push(randomizer([a, b, c, d]));
 		}
