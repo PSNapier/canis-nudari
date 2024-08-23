@@ -53,7 +53,17 @@ function rollgeno() {
 			let c = [s2, d1].sortByArray(gene[1]).join('');
 			let d = [s2, d2].sortByArray(gene[1]).join('');
 
-			puppy.push(randomizer([a, b, c, d]));
+			let output = '';
+			if (gene[0] === 'dilute' && ssplit.includes('dd') && dsplit.includes('dd')) {
+				let x = rng(100);
+				if (x <= 10) output = 'didi';
+				else if (x <= 35) output = 'ddi';
+			}
+
+			output = output || randomizer([a, b, c, d]);
+			puppy.push(output);
+
+			if (output === 'didi' && rng(100) <= 80) puppydeath = 1;
 		}
 
 		[...dictionary.bases, ...dictionary.markings, ...dictionary.body].forEach((gene) => {
