@@ -37,34 +37,3 @@ let dictionary = {
 		['litter size', ['L','l']],
 	],
 };
-
-let phenoDictionary = {
-	bases: [
-		// ['pheno', ['gene|gene', 'gene|gene'...]]
-		['dark yellow', ['ZZ|Zz', 'YdYd|Ydya|Ydys|Ydyg|Ydyb|Ydyc']],
-		['light yellow', ['ZZ|Zz', 'yaya|yays|yayg|yayb|yayc']],
-		['sunset yellow', ['ZZ|Zz', 'ysys|ysyg|ysyb|ysyc']],
-		['golden yellow', ['ZZ|Zz', 'ygyg|ygyb|ygyc']],
-		['bright yellow', ['ZZ|Zz', 'ybyb|ybyc']],
-		['cream yellow', ['ZZ|Zz', 'ycyc']],
-		['chestnut dune', ['zz', 'DncDnc|Dncdna|Dncdnt|Dncdnd|Dncdnl|Dncdns']],
-		['dark dune', ['zz', 'dnadna|dnadnt|dnadnd|dnadnl|dnadns']],
-		['terracotta dune', ['zz', 'dntdnt|dntdnd|dntdnl|dntdns']],
-		['dune', ['zz', 'dnddnd|dnddnl|dnddns']],
-		['light dune', ['zz', 'dnldnl|dnldns']],
-		['sand dune', ['zz', 'dnsdns']],
-	],
-	dilute: [
-		['dilute', ['dd']],
-		['double dilute', ['ddi']],
-		['lethal white', ['didi']],
-	],
-	mixSpecial: [
-		['hazel yellow', ['mxxmxx', 'ZZ|Zz']],
-		['seal dune', ['mxxmxx', 'zz']],
-	],
-	mix: [
-		['hazel yellow', ['mxdmxd', 'ZZ|Zz']],
-		['seal dune', ['mxdmxd', 'zz']],
-	]
-}
