@@ -360,23 +360,6 @@ function rollgeno() {
 				pheno.push('frosting Error');
 			}
 
-			if (temppuppy.search(/\b(UU|Uu)\b/) != -1) {
-				// console.log("no urajiro");
-			} 
-			else if (temppuppy.search(/(Uutgr)/) != -1) {
-				console.log('yas');
-				pheno.push('Tiger Urajiro (Minimal).');
-			} 
-			else if (temppuppy.search(/(utgrutgr|utgru)/) != -1) {
-				pheno.push('Tiger Urajiro.');
-			} 
-			else if (temppuppy.search(/(uu)/) != -1) {
-				pheno.push('Normal Urajiro.');
-			} 
-			else {
-				pheno.push('urajiro Error');
-			}
-
 			if (temppuppy.search(/(SS)/) != -1) {
 				// console.log("no urajiro");
 			} else if (temppuppy.search(/(Ssi|Ssp)/) != -1) {
@@ -389,6 +372,54 @@ function rollgeno() {
 				pheno.push('Piebald White.');
 			} else {
 				pheno.push('whitespotting Error');
+			}
+			
+			if (temppuppy.search(/\b(UU|Uu)\b/) != -1) {
+				// console.log("no urajiro");
+			} 
+			else if (temppuppy.search(/(Uutgr)/) != -1) {
+				pheno.push('Tiger Urajiro (Minimal).');
+			} 
+			else if (temppuppy.search(/(utgrutgr|utgru)/) != -1) {
+				pheno.push('Tiger Urajiro.');
+			} 
+			else if (temppuppy.search(/(uu)/) != -1) {
+				pheno.push('Normal Urajiro.');
+			} 
+			else {
+				pheno.push('urajiro Error');
+			}
+
+			function koibaldHiding(phene) {
+				pheno.replace(phene, `Hidden ${phene}`);
+			}
+
+			if (temppuppy.search(/(KoKo|Koko|Kokow|Kokob|Kokop|Kokoc)/) != -1) {
+				// no koibald
+			}
+			else if (temppuppy.search(/(koko|kokow|kokob|kokop|kokoc)/) != -1) {
+				[
+					'Tiger Urajiro (Minimal).', 
+					'Tiger Urajiro.',
+				].forEach(phene => koibaldHiding(phene));
+				pheno.splice(1, 0, 'Bicolor Koibald');
+			}
+			else if (temppuppy.search(/(kowkow|kowkob|kowkop|kowkoc)/) != -1) {
+				[
+					'Tiger Urajiro (Minimal).', 
+					'Tiger Urajiro.',
+					'Black Spotting.',
+					'Black Socks.',
+					'Black Irish.',
+					'Black Collared Irish.',
+					'Dorsal Strip.',
+					'Dorsal Dun.',
+					'Dorsal Saddlback.',
+					'Dorsal Jackalback.',
+					'Black Mask.',
+					'Black Points.',
+				].forEach(phene => koibaldHiding(phene));
+				pheno.splice(1, 0, 'White Koibald');
 			}
 
 			if (temppuppy.search(/(EcEc)/) != -1) {

@@ -40,6 +40,20 @@ Array.prototype.sortByArray = function(orderArr) {
     return this.sort((a, b) => map.get(a) - map.get(b));
 };
 
+Array.prototype.remove = function(querry) {
+	const index = this.indexOf(querry);
+	if (index > -1) {
+		this.splice(index, 1);
+	};
+};
+
+Array.prototype.replace = function(querry, replacement) {
+	const index = this.indexOf(querry);
+	if (index > -1) {
+		this.splice(index, 1, replacement);
+	};
+};
+
 // string.capitalizeStr();
 // TODO: capitalize no worky with opening parenthesis even though regexr says it should?
 String.prototype.capitalizeStr = function() {
