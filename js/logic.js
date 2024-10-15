@@ -83,7 +83,9 @@ function rollgeno() {
 
 		function phenobasecoat() {
 			function normalbase() {
-				if (temppuppy.search(/\b(ZZ|Zz)\b/) != -1) {
+				if (temppuppy.search(/\b(ZZ|Zz)\b/) != -1 || temppuppy.search(/\b(kockoc)\b/) != -1) {
+					console.log('yellow');
+					
 					if (
 						temppuppy.search(
 							/\b(YdYd|Ydya|Ydys|Ydyg|Ydyb|Ydyc)\b/,
@@ -112,7 +114,15 @@ function rollgeno() {
 					} else {
 						pheno.push('Yellow error');
 					}
-				} else if (temppuppy.search(/\b(zz)\b/) != -1) {
+				} 
+				
+				if (temppuppy.search(/\b(zz)\b/) != -1 || temppuppy.search(/\b(kockoc)\b/) != -1) {
+					console.log('dune');
+					
+					if (temppuppy.search(/\b(kockoc)\b/) != -1) {
+						pheno.push('and');
+					}
+
 					if (
 						temppuppy.search(
 							/\b(DncDnc|Dncdna|Dncdnt|Dncdnd|Dncdnl|Dncdns)\b/,
@@ -147,6 +157,10 @@ function rollgeno() {
 					pheno.push('Z error');
 				}
 			} // normalbase();
+
+			if (temppuppy.search(/\b(bb)\b/) != -1) {
+				pheno.push('Liver');
+			}
 
 			//   console.log(temppuppy);
 			if (temppuppy.search(/\b(DD|Dd|Ddi)\b/) != -1) {
@@ -226,6 +240,19 @@ function rollgeno() {
 		pheno.push('with');
 
 		function phenomarkings() {
+			if (temppuppy.search(/(Atay)/) != -1) {
+				pheno.push('Clear Sable Carrier.');
+			}
+			else if (temppuppy.search(/(Atays)/) != -1) {
+				pheno.push('Shaded Sable Carrier.');
+			}
+			else if (temppuppy.search(/(ayay|ayays)/) != -1) {
+				pheno.push('Clear Sable.');
+			}
+			else if (temppuppy.search(/(aysays)/) != -1) {
+				pheno.push('Shaded Sable.');
+			}
+
 			if (temppuppy.search(/(StbStb)/) != -1) {
 				pheno.push('Solid Inverse Body Stripes.');
 			} else if (temppuppy.search(/(Stbsth)/) != -1) {
@@ -402,7 +429,8 @@ function rollgeno() {
 					'Tiger Urajiro (Minimal).', 
 					'Tiger Urajiro.',
 				].forEach(phene => koibaldHiding(phene));
-				pheno.splice(1, 0, 'Bicolor Koibald');
+				let pos = pheno.indexOf('with');
+				pheno.splice(pos, 0, 'Bicolor Koibald');
 			}
 			else if (temppuppy.search(/(kowkow|kowkob|kowkop|kowkoc)/) != -1) {
 				[
@@ -419,7 +447,37 @@ function rollgeno() {
 					'Black Mask.',
 					'Black Points.',
 				].forEach(phene => koibaldHiding(phene));
-				pheno.splice(1, 0, 'White Koibald');
+				let pos = pheno.indexOf('with');
+				pheno.splice(pos, 0, 'White Koibald');
+			}
+			else if (temppuppy.search(/(kobkob|kobkop|kobkoc)/) != -1) {
+				[
+					'Tiger Urajiro (Minimal).', 
+					'Tiger Urajiro.',
+					'White Spotting.',
+					'White Irish.',
+					'White Collared Irish.',
+					'Piebald White.',
+					'White Frosting.',
+				].forEach(phene => koibaldHiding(phene));
+				let pos = pheno.indexOf('with');
+				pheno.splice(pos, 0, 'Black Koibald');
+			}
+			else if (temppuppy.search(/(kopkop|kopkoc)/) != -1) {
+				[
+					'Tiger Urajiro (Minimal).', 
+					'Tiger Urajiro.',
+				].forEach(phene => koibaldHiding(phene));
+				let pos = pheno.indexOf('with');
+				pheno.splice(pos, 0, 'Painted Koibald');
+			}
+			else if (temppuppy.search(/(kockoc)/) != -1) {
+				[
+					'Tiger Urajiro (Minimal).', 
+					'Tiger Urajiro.',
+				].forEach(phene => koibaldHiding(phene));
+				let pos = pheno.indexOf('with');
+				pheno.splice(pos, 0, 'Chimeric Koibald');
 			}
 
 			if (temppuppy.search(/(EcEc)/) != -1) {
@@ -483,6 +541,13 @@ function rollgeno() {
 				pheno.push('Saber Tail.');
 			} else {
 				pheno.push('tailshape Error');
+			}
+
+			if (temppuppy.search(/(EpEp|Eped)/) != -1) {
+				pheno.push('(Drop Ear Carrier).');
+			}
+			else if (temppuppy.search(/(eded)/) != -1) {
+				pheno.push('Drop Ears.');
 			}
 
 			/* if (temppuppy.search(/(TltTlt|TltTlttlp|Tlttls|Tlttla)/) != -1) {
