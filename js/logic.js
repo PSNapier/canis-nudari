@@ -116,7 +116,7 @@ function rollgeno() {
 					}
 				} 
 				
-				if (temppuppy.search(/\b(zz)\b/) != -1 || temppuppy.search(/\b(kockoc)\b/) != -1) {
+				else if (temppuppy.search(/\b(zz)\b/) != -1 || temppuppy.search(/\b(kockoc)\b/) != -1) {
 					console.log('dune');
 					
 					if (temppuppy.search(/\b(kockoc)\b/) != -1) {
