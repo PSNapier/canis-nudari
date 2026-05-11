@@ -54,7 +54,7 @@ function rollgeno() {
 			let d = [s2, d2].sortByArray(gene[1]).join('');
 
 			let output = '';
-			if (gene[0] === 'dilute' && ssplit.includes('dd') && dsplit.includes('dd')) {
+			if (gene[0] === 'dilute' && s1 === 'd' && s2 === 'd' && d1 === 'd' && d2 === 'd') {
 				let x = rng(100);
 				if (x <= 10) output = 'didi';
 				else if (x <= 35) output = 'ddi';
